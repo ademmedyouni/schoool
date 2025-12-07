@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  mysql-db:
+    image: mysql:8
+    container_name: mysql-school
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: school_db
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - school-network
+
+  school-backend:
+    image: votre_dockerhub/school:1.0.0
+    container_name: school-backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql-db
+    networks:
+      - school-network
+
+volumes:
+  mysql_data:
+
+networks:
+  school-network:
