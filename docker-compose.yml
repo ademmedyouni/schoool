@@ -13,7 +13,7 @@ services:
       - school-network
 
   school-backend:
-    image: votre_dockerhub/school:1.0.0
+    image: ademmedyouni/school:1.0.0
     container_name: school-backend
     ports:
       - "8080:8080"
